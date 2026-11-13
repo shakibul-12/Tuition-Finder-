@@ -29,7 +29,7 @@
         <activity android:name=".activities.TuitionListActivity" android:exported="false" />
         <activity android:name=".activities.PostDetailActivity" android:exported="false" />
         <activity android:name=".activities.ApplicationListActivity" android:exported="false" />
-        <activity android:name=".activities.NotificationsActivity" android:exported="false" />
+        <activity android:name=".activities.NotificationActivity" android:exported="false" />
     </application>
 
 </manifest>

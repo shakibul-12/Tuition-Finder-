@@ -1,89 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:background="@color/background"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tvListTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="টিউশন তালিকা"
-        android:textSize="26sp"
-        android:textStyle="bold" />
-
-    <!-- ===== সার্চ ও ফিল্টার (শুধু শিক্ষকের লিস্টে দেখাবে) ===== -->
+    <!-- হেডার -->
     <LinearLayout
-        android:id="@+id/layoutSearchArea"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:background="@drawable/bg_header"
+        android:orientation="vertical"
+        android:paddingStart="20dp"
+        android:paddingTop="40dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="24dp">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/tvListTitle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:hint="খুঁজুন (বিষয়, এলাকা, ক্লাস...)">
+            android:text="টিউশন তালিকা"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etSearch"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingTop="12dp"
+        android:paddingEnd="16dp">
 
+        <!-- সার্চ ও ফিল্টার (শুধু শিক্ষকের লিস্টে) -->
         <LinearLayout
+            android:id="@+id/layoutSearchArea"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btnToggleFilter"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="4dp"
-                android:layout_weight="1"
-                android:text="ফিল্টার" />
-
-            <Button
-                android:id="@+id/btnClearFilter"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_weight="1"
-                android:text="ফিল্টার মুছুন" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layoutFilter"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:visibility="gone">
+            android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:hint="এলাকা (যেমন: মিরপুর)">
+                android:hint="🔍  বিষয়, এলাকা, ক্লাস..."
+                app:boxBackgroundColor="@color/white"
+                app:boxCornerRadiusBottomEnd="24dp"
+                app:boxCornerRadiusBottomStart="24dp"
+                app:boxCornerRadiusTopEnd="24dp"
+                app:boxCornerRadiusTopStart="24dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etFilterArea"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:hint="ক্লাস (যেমন: ৯, SSC)">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etFilterClass"
+                    android:id="@+id/etSearch"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text" />
@@ -92,67 +62,143 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:orientation="horizontal">
 
-                <com.google.android.material.textfield.TextInputLayout
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnToggleFilter"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="48dp"
                     android:layout_marginEnd="4dp"
                     android:layout_weight="1"
-                    android:hint="সর্বনিম্ন বেতন">
+                    android:text="ফিল্টার"
+                    app:cornerRadius="24dp" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etMinSalary"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="number" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnClearFilter"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="48dp"
                     android:layout_marginStart="4dp"
                     android:layout_weight="1"
-                    android:hint="সর্বোচ্চ বেতন">
+                    android:text="মুছুন"
+                    app:cornerRadius="24dp" />
+            </LinearLayout>
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etMaxSalary"
+            <!-- ফিল্টারের ঘর -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/layoutFilter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:visibility="gone"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="number" />
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
+                        android:hint="এলাকা (যেমন: মিরপুর)">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etFilterArea"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:hint="ক্লাস (যেমন: ৯, SSC)">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etFilterClass"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="4dp"
+                            android:layout_weight="1"
+                            android:hint="সর্বনিম্ন বেতন">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etMinSalary"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="number" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:layout_weight="1"
+                            android:hint="সর্বোচ্চ বেতন">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etMaxSalary"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="number" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/tvCount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="4dp"
+                android:textColor="@color/text_gray"
+                android:textSize="13sp" />
         </LinearLayout>
 
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp" />
+
         <TextView
-            android:id="@+id/tvCount"
+            android:id="@+id/tvEmpty"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:text="কোনো টিউশন পাওয়া যায়নি"
+            android:textColor="@color/text_gray"
+            android:textSize="16sp"
+            android:visibility="gone" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginTop="8dp"
-            android:textSize="14sp" />
+            android:clipToPadding="false"
+            android:paddingBottom="16dp" />
     </LinearLayout>
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="16dp" />
-
-    <TextView
-        android:id="@+id/tvEmpty"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:gravity="center"
-        android:text="কোনো টিউশন পাওয়া যায়নি"
-        android:textSize="16sp"
-        android:visibility="gone" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="12dp" />
 </LinearLayout>
